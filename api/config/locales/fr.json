@@ -1,0 +1,97 @@
+{
+  "code": 1,
+  "languageNames": {
+    "en": "English",
+    "fr": "Français"
+  },
+  "pages": {
+    "home": "accueil",
+    "register": "inscription",
+    "forgot": "mot de passe oublié ?",
+    "reset": "mettre à jour le mot de passe",
+    "account": "mon compte",
+    "settings": "paramètres"
+  },
+  "settings": {
+    "languages": {
+      "_": "Langue"
+    },
+    "notifications": {
+      "_": "notifications",
+      "e": "activer notifications",
+      "d": "désactiver notifications",
+      "device_not_found": "Appareil introuvable, veuillez recharher la page"
+    }
+  },
+  "auth": {
+    "login": {
+      "_": "connexion",
+      "already": "vous êtes déjà connecté"
+    },
+    "signup": {
+      "_": "s'enregister",
+      "pass2": "confirmer mot de passe",
+      "gamekey": "clé de jeu",
+      "cgu": "condition general d'utilisation",
+      "done": "compte crée"
+    },
+    "forgot": {
+      "_pass": "mot de passe oublié ?",
+      "sent": "e-mail envoyé"
+    },
+    "reset": {
+      "_": "modifier mon mot de passe"
+    },
+    "logout": {
+      "_": "déconnexion"
+    },
+    "errors": {
+      "login": {
+        "0": "informations erroné",
+        "1": "jeton invalide, veuillez vous authentifier",
+        "2": "cookie invalide"
+      },
+      "register": {
+        "0": "nom de compte invalide",
+        "0a": "nom de compte requis",
+        "0b": "nom de compte doit contenir entre 6 et 15 characters",
+        "0c": "nom de compte indisponible, veuillez en choisir un autre",
+        "1": "mot de passe invalide",
+        "1a": "mot de passe requis",
+        "1b": "mot de passe doit contenir entre 8 et 32 characters",
+        "1c": "confirmation de mot de passe requise",
+        "1d": "les mots de passe ne correspondent pas",
+        "2": "adresse email invalide",
+        "2a": "adresse email requise",
+        "3": "clé de jeu invalide",
+        "3a": "clé de jeu requise",
+        "4": "informations erroné",
+        "5": "cgu requise"
+      },
+      "forgot": {
+        "0": "informations erroné, contactez le support"
+      },
+      "reset": {
+        "0": "impossible de changer le mot de passe pour ce compte, contactez le support"
+      },
+      "unauthorized": "non autorisé"
+    },
+    "success": {
+      "register": {
+        "0": "votre compte de jeu est crée"
+      },
+      "reset": {
+        "0": "Nouveau mot de passe enregistré"
+      }
+    },
+    "nk": "nickname",
+    "acc": "nom de compte",
+    "pass": "mot de passe",
+    "email": "adresse e-mail"
+  },
+  "submit": "envoyer",
+  "error": "erreur",
+  "success": "succès",
+  "info": "information(s)",
+  "loading": "chargement ..."
+}

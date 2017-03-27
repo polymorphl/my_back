@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+### Service: NodeJS Container ##########################
+  api:
+    build: ./api
+    container_name: api
+    tty: true
+    volumes:
+      - "./api:/src/backend"
+    ports:
+      - "3000:3000"
+    depends_on:
+     - mysql
+    command: "sh -c 'cd backend ; npm run start'"
+    env_file: .dev-env
+    environment:
+      - DOCKER=1
+      - MYSQL_HOST=mysql
+    networks:
+      - back
+  
+### Service: MySQL Container ##########################
+  mysql:
+    build: ./database/mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    env_file: .dev-mysql-env
+    environment:
+      - MYSQL_HOST=0.0.0.0
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./database/mysql/dump:/docker-entrypoint-initdb.d
+    networks:
+        - back
+
+networks:
+### Network: Back (shared by mysql && api) ##########################
+  back:
+    driver: bridge

@@ -1,0 +1,97 @@
+{
+	"code": 0,
+	"languageNames": {
+		"en": "English",
+		"fr": "Français"
+	},
+  "pages": {
+    "home": "home",
+    "register": "register",
+    "forgot": "forgot password ?",
+    "reset": "reset password",
+    "account": "my account",
+    "settings": "settings"
+  },
+  "settings": {
+    "languages": {
+      "_": "Language"
+    },
+    "notifications": {
+      "_": "notifications",
+      "e": "enable notifications",
+      "d": "disable notifications",
+      "device_not_found": "Device not found, you should reload the page"
+    }
+  },
+	"auth": {
+		"login": {
+			"_": "login",
+      "already": "you are already connected"
+		},
+		"signup": {
+			"_": "signup",
+			"pass2": "confirm password",
+			"gamekey": "game key",
+			"cgu": "general condition of use",
+			"done": "account created"
+		},
+		"forgot": {
+			"_pass": "forgot password ?",
+			"sent": "email sent"
+		},
+    "reset": {
+      "_": "change my password"
+    },
+    "logout": {
+      "_": "logout"
+    },
+		"errors": {
+			"login": {
+        "0": "invalid credential",
+        "1": "invalid token, please log in",
+        "2": "invalid cookie"
+      },
+      "register": {
+        "0": "invalid nickname",
+        "0a": "nickname required",
+        "0b": "nickname must contain 6-15 characters",
+        "0c": "nickname already taken, please choose another one",
+        "1": "invalid password",
+        "1a": "password required",
+        "1b": "password must contain 8-32 characters",
+        "1c": "password confirmation required",
+        "1d": "passwords mismatch",
+        "2": "invalid email",
+        "2a": "email required",
+        "3": "invalid gamekey",
+        "3a": "gamekey required",
+        "4": "invalid credential",
+        "5": "cgu required"
+      },
+      "forgot": {
+        "0": "invalid credential, contact the support"
+      },
+      "reset": {
+        "0": "cannot change password for this account, contact the support"
+      },
+      "unauthorized": "unautorized"
+		},
+    "success": {
+      "register": {
+        "0": "your game account has been created"
+      },
+      "reset": {
+        "0": "New password has been saved."
+      }
+    },
+		"nk": "nickname",
+		"acc": "account",
+		"pass": "password",
+		"email": "email address"
+	},
+	"submit": "submit",
+  "error": "error",
+  "success": "success",
+  "info": "information(s)",
+  "loading": "loading ..."
+}

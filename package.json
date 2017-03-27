@@ -1,0 +1,14 @@
+{
+  "name": "koa-superviser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "nodemon --config api/nodemon.json",
+    "docker-start": "",
+    "docker-build": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

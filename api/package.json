@@ -1,0 +1,41 @@
+{
+  "name": "my_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --config nodemon.json",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "my__gen-ssl": "./scripts/generate_certs.sh",
+    "postinstall": "npm run my__gen-ssl"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie": "^0.3.1",
+    "crypto": "0.0.3",
+    "dotenv": "^4.0.0",
+    "jsonwebtoken": "^7.3.0",
+    "kcors": "2.2.1",
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-helmet": "^3.1.0",
+    "koa-i18n": "2.0.1",
+    "koa-locale": "^1.2.0",
+    "koa-logger": "^2.0.1",
+    "koa-router": "^7.0.1",
+    "koa-send": "^3.3.0",
+    "koa-unless": "^1.0.7",
+    "locale": "^0.1.0",
+    "mjml": "^3.3.0",
+    "mysql": "^2.13.0",
+    "node-gcm": "^0.14.4",
+    "nodemailer": "^0.7.1",
+    "platform": "^1.3.3",
+    "pug": "^2.0.0-beta11",
+    "sequelize": "^3.30.4",
+    "socket.io": "^1.7.3",
+    "sticky-listen": "^3.3.0",
+    "winston": "^2.3.1"
+  }
+}
