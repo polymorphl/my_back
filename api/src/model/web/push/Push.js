@@ -185,7 +185,7 @@ let PushMobileRoutines = {
 };
 
 let PushActiveRoutines = {
-  enableDevice: async function(type, aid, token, configID) {
+  enableDevice: async function(type, id, token, configID) {
     return PushActiveModel.findOne({
       where: { token: token }
     }).then(function(device) {
@@ -196,7 +196,7 @@ let PushActiveRoutines = {
           configuration_id: configID,
           configuration_type: type,
           token: token,
-          user_id: aid,
+          user_id: id,
           enable: 1
         });
       }

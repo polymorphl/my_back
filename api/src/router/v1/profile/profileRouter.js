@@ -4,7 +4,7 @@ const ctrl = require('./profileCtrl');
 let router = KoaRouter();
 
 router.get('/', async(ctx, next)=>{
-  let user = await ctrl.getUserById(ctx.state.user.aid, ctx.options);
+  let user = await ctrl.getUserById(ctx.state.user.id, ctx.options);
   if(!user) { ctx.body = ctx.responseEnvelope(ctx, 400, {}, []); }
   else ctx.body = ctx.responseEnvelope(ctx, 200, user.toJSON(), []);
 });

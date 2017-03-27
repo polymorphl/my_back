@@ -13,7 +13,7 @@ services:
     depends_on:
      - mysql
     command: "sh -c 'cd backend ; npm run start'"
-    env_file: .dev-env
+    env_file: ./api/.dev-env
     environment:
       - DOCKER=1
       - MYSQL_HOST=mysql

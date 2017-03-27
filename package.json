@@ -5,8 +5,8 @@
   "main": "api/index.js",
   "scripts": {
     "start": "nodemon --config api/nodemon.json",
-    "docker-start": "",
-    "docker-build": "",
+    "docker-start": "set EXEC_MODE=0 && docker-compose up",
+    "docker-build": "set EXEC_MODE=0 && docker-compose up --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -77,14 +77,14 @@ router.post('/register', async(ctx, next) => {
 //a loading user will try to auth with cookie on this route..
 router.get('/pingAuth', async(ctx) => {
   if(ctx.state.user){
-    let user = await User.c.getById(ctx.state.user.aid, {
+    let user = await User.c.getById(ctx.state.user.id, {
       include: [{
         association: User.settings, as: 'settings'
       },{
         association: User.devices
       }],
     });
-    logger.info('USER FOUND => %s(%)', ctx.state.user.account, ctx.state.user.aid);
+    logger.info('USER FOUND => %s(%)', ctx.state.user.account, ctx.state.user.id);
     ctx.body = ctx.responseEnvelope(ctx, 200, user.toJSON(), []);
   } else {
     ctx.body = ctx.responseEnvelope(ctx, 200, null, [{ msg: 'auth.errors.login.2' }]);
@@ -120,7 +120,6 @@ router.post('/forgot/update', async(ctx) => {
     ctx.body = ctx.responseEnvelope(ctx, 400, {}, []);
   } else {
     let state = await ctrl.changePassword(ctx.request.body.token, ctx.request.body.newPassword);
-    logger.info('>>',state);
     if (!state) {
       ctx.body = ctx.responseEnvelope(ctx, 400, {}, [ { msg: "auth.errors.reset.0" }]);
     } else {

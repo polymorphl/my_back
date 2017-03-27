@@ -8,7 +8,7 @@ router.post('/test', async(ctx) => {
   if (ctx.request.body.token && ctx.request.body.token.trim() && ctx.state.user) {
     let d = {
       text_key: WELCOME_MSG, text_value: JSON.stringify('{}'),
-      target_1: ctx.state.user.aid
+      target_1: ctx.state.user.id
     };
     let resp = await ctrl.sendNotificationNoRetry(WELCOME_MSG, [ctx.request.body.token]);
     await ctrl.logNotifications(d, 1, resp);
@@ -24,7 +24,7 @@ router.post('/subscribe', async(ctx) => {
   } else {
     let config = await ctrl.createConfiguration(ctx.request.body);
     if (config.id > 0) {
-      await ctrl.subscribeUser(config.type, ctx.state.user.aid, ctx.request.body.token, config.id);
+      await ctrl.subscribeUser(config.type, ctx.state.user.id, ctx.request.body.token, config.id);
     }
     ctx.body = ctx.responseEnvelope(ctx, 200, {subscribed: true}, []);
   }

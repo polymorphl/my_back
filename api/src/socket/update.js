@@ -47,11 +47,11 @@ let streamUpdate = (io)=>{
     for(let id in io.sockets.sockets){
       let socket = io.sockets.sockets[id];
       if(socket.u){
-        idToSocket[socket.u.aid] = id;
+        idToSocket[socket.u.id] = id;
         for(let tag in socket.rooms){
           if(tag in serverRooms){
             if(!userRooms[tag]) { userRooms[tag]= []}
-            userRooms[tag].push(socket.u.aid);
+            userRooms[tag].push(socket.u.id);
           }
         }
       }
@@ -80,7 +80,7 @@ let forceUpdate = async (socket, rooms)=>{
   rooms.forEach(function(room){
     if(room in serverRooms){
       if(!userRooms[room]) { userRooms[room]= []}
-      userRooms[room].push(socket.u.aid);
+      userRooms[room].push(socket.u.id);
     }
   });
   for(let tag in serverRooms){
@@ -97,10 +97,10 @@ let sendUpdate = function(tag, data,sockets, idToSocket){
   let l = data.length;
   for(let i = 0; i < l; i++){
     let userData = data[i];
-    let aid = userData.aid;
-    delete userData.aid;
-    if(sockets[idToSocket[aid]]){
-      sockets[idToSocket[aid]].emit(`${tag}:update`, userData);
+    let id = userData.id;
+    delete userData.id;
+    if(sockets[idToSocket[id]]){
+      sockets[idToSocket[id]].emit(`${tag}:update`, userData);
     }
     else {
       console.error('User disconnected during update');

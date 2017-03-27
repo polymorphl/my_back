@@ -9,7 +9,7 @@ let web = new Sequelize(process.env.MYSQL_DATABASE,
 });
 
 web.authenticate().then(function(state, a) {
-  console.log(state, a)
+  console.log('[MYSQL] Connected');
 })
 
 web.dialect.supports.schemas = true;

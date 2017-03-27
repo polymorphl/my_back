@@ -54,7 +54,6 @@ let UserSettingsRoutines = {
     );
   },
   updateForgotData: async function(id, token, hours) {
-    console.log('user id %s, token: %s, hours: %s', id, token, hours)
     return UserSettingsModel.update({
       reset_token: token,
       reset_token_expire: Sequelize.literal(`CURRENT_TIMESTAMP + INTERVAL '${hours}' HOUR `)

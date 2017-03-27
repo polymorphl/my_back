@@ -102,11 +102,9 @@ let ctrl = {
     let d = ctx.request.body;
     let e = [];
 
-console.log('createUser',User.c.createUser())
     // Todo manage I/O non blocking check
     // TODO Parralel call Promise.All ....
     // TODO see validators, infinte arguments
-
     if(!await isNameValid(d.firstname) && !await isNameValid(d.lastname)){
       e.push({msg: 'auth.errors.register.0'});
     }
@@ -120,7 +118,6 @@ console.log('createUser',User.c.createUser())
     if(e.length > 0){
       ctx.body = ctx.responseEnvelope(ctx, 401, {}, [e]);
     } else {
-      logger.info(User);
       let user = await User.c.createUser(d.email, d.password, d.firstname, d.lastname);
       user = user.toJSON();
       // create the user settings row

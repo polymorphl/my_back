@@ -4,8 +4,11 @@ logs
 npm-debug.log*
 .DS_Store
 
+# SSL certs
+api/ssl
 # Compiled
 build/
+
 
 # Dependency directories
 node_modules

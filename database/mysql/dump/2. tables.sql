@@ -19,7 +19,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `user_settings` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL COMMENT 'User ID - aid',
+  `user_id` int(11) unsigned NOT NULL COMMENT 'User ID - id',
   `language` varchar(255) NOT NULL COMMENT 'Language code',
   `reset_token` varchar(255) NULL COMMENT 'Reset token',
   `reset_token_expire` TIMESTAMP NULL COMMENT 'Reset Token Expire',

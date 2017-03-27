@@ -44,8 +44,8 @@ let ctrl = {
    *  Link a user  <=> configuration
    *  enableDevice => Find by token, if not found, create the configuration
    * */
-  async subscribeUser(type, aid, token, configID) {
-    return await PushActive.c.enableDevice(type, aid, token, configID);
+  async subscribeUser(type, id, token, configID) {
+    return await PushActive.c.enableDevice(type, id, token, configID);
   },
 
   /*
@@ -90,7 +90,7 @@ let ctrl = {
   // TODO prefix google request function with GCM like: GCM_SubscribeUserToTopic
   subscribeUserToTopic: (obj) => {
     return new Promise(function(resolve, reject) {
-      if (parseInt(obj.aid, 10) && obj.topic.trim() != "") {
+      if (parseInt(obj.id, 10) && obj.topic.trim() != "") {
         logger.debug('[notificationctrl] valid data');
         request({
           method: 'POST',

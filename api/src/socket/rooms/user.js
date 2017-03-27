@@ -6,9 +6,9 @@ const User = model.User;
 async function updateResources(idArr){
   return new Promise(function(resolve){
     User.findAll(generateQuery({
-      attributes: ['aid'],
+      attributes: ['id'],
       where:{
-        aid: {
+        id: {
           $in: idArr
         }
       },
@@ -27,9 +27,9 @@ async function updateResources(idArr){
 async function updateExperience(idArr){
   return new Promise(function(resolve){
     User.findAll(generateQuery({
-      attributes: ['aid', 'nickname'],
+      attributes: ['id', 'nickname'],
       where: {
-        aid: {
+        id: {
           $in: idArr
         }
       },
@@ -48,8 +48,8 @@ async function updateExperience(idArr){
 async function updateGeneralData(idArr){
   return new Promise(function(resolve){
     User.findAll(generateQuery({
-      attributes: ['aid', 'nickname', 'level'],
-      where: { aid: { $in: idArr } },
+      attributes: ['id', 'firstname', 'lastname'],
+      where: { id: { $in: idArr } },
       include: [{
         association: User.settings, as: 'settings'
       },{

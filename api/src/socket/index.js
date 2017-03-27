@@ -76,7 +76,7 @@ let socketApp = (server)=> {
         } else {
           socket.u = decoded.user;
           socket.emit('authenticated');
-          logger.info('[SOCKET.IO] - user decoded: %s', decoded.user.aid);
+          logger.info('[SOCKET.IO] - user decoded: %s', decoded.user.id);
           defineConnectedEndpoints(socket);
         }
       });

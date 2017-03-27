@@ -23,7 +23,7 @@ router.post('/update', async (ctx) => {
   if (!ctx.request.body.locale && !ctx.state.user) {
     ctx.body = ctx.responseEnvelope(ctx, 400, {}, []);
   } else {
-    await ctrl.updateLanguage(ctx.state.user.aid, ctx.request.body.locale);
+    await ctrl.updateLanguage(ctx.state.user.id, ctx.request.body.locale);
     ctx.body = ctx.responseEnvelope(ctx, 200, {updated: true}, []);
   }
 });
