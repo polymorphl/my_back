@@ -55,6 +55,7 @@ let routerApp = () => {
     if (whitelist.indexOf(ori) >= 0) {
       return ori;
     } else {
+      console.log('not in whitelist =>', ori);
       return whitelist[0];
     }
   }

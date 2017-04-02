@@ -4,13 +4,13 @@ FROM node:7.6.0
 RUN echo "Europe/Paris" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
-RUN mkdir /src
+RUN mkdir /api
 
 # TODO: Create a specific user before expose instance (See dockerfile in boilerplate_backend)
 
 RUN npm install nodemon -g
 
-WORKDIR /src
+WORKDIR /api
 
 ADD .editorconfig .editorconfig
 ADD package.json package.json

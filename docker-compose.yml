@@ -7,12 +7,12 @@ services:
     container_name: api
     tty: true
     volumes:
-      - "./api:/src/backend"
+      - "./api:/api"
     ports:
-      - "3000:3000"
+      - "5000:5000"
     depends_on:
      - mysql
-    command: "sh -c 'cd backend ; npm run start'"
+    command: "sh -c 'cd api ; npm run start'"
     env_file: ./api/.dev-env
     environment:
       - DOCKER=1
@@ -33,7 +33,7 @@ services:
     volumes:
       - ./database/mysql/dump:/docker-entrypoint-initdb.d
     networks:
-        - back
+      - back
 
 networks:
 ### Network: Back (shared by mysql && api) ##########################

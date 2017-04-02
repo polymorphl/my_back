@@ -1,7 +1,8 @@
+const path = require('path');
 const KoaRouter = require('koa-router');
 const send = require('koa-send');
 const ctrl = require('./i18nCtrl');
-const logger = require('../../../helpers');
+const logger = require('../../../helpers').logger;
 
 let locale = require('locale');
 let router = KoaRouter();
@@ -13,7 +14,8 @@ router.get('/:locale', async (ctx) => {
   if (ctx.params.locale && ctx.params.locale.trim()) {
     logger.debug('[I18N], received a locale request!');
     let selectedLocale = (new locale.Locales(ctx.params.locale)).best(supported).toString();
-    await send(ctx, `./config/locales/${selectedLocale}.json`, { root: process.env.ABS_PATH });
+    await send(ctx, `${selectedLocale}.json`, {root: `/api/config/locales/`});
+    
   } else {
     logger.debug('[I18N], invalid locale request!');
   }
