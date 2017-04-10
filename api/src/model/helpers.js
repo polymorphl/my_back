@@ -1,4 +1,3 @@
-
 let selectFields = (dataSet, scope)=>{
   let fields =[];
   scope.forEach(function(tag){
@@ -25,6 +24,7 @@ let mapQueries = (queries, model)=>{
 };
 
 let generateQuery = function(query, model, options){
+  if(!model) throw new Error('[GenerateQuery] - model undefined');
   options = options || {};
   options.fields = options.fields || ['excerpt'];
 
@@ -38,6 +38,7 @@ let generateQuery = function(query, model, options){
     }
   }
   delete query.dataSets;
+  return query;
   // options.related = options.related ||[];
   // if(options.related instanceof Array){
   //   let l = options.related.length;
@@ -45,9 +46,7 @@ let generateQuery = function(query, model, options){
   //     query.include
   //   }
   // }
-  return query;
 };
-
 
 module.exports = {
   selectFields: selectFields,

@@ -17,9 +17,11 @@ services:
     environment:
       - DOCKER=1
       - MYSQL_HOST=mysql
+      - REDIS_ADDR=redis
+      - REDIS_PORT=6379
     networks:
       - back
-  
+
 ### Service: MySQL Container ##########################
   mysql:
     build: ./database/mysql
@@ -35,7 +37,19 @@ services:
     networks:
       - back
 
-networks:
+### Service: Redis Key/Value ##########################
+  redis:
+    image: 'redis:3.0-alpine'
+    container_name: redis
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    networks:
+      - back
+
 ### Network: Back (shared by mysql && api) ##########################
+networks:
   back:
     driver: bridge

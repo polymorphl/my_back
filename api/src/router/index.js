@@ -62,17 +62,16 @@ let routerApp = () => {
 
   /* Build Response Object */
   /* INFO: Available in ctx object */
-  // ARGS: ctx, status(numeric), payload(object/array), msgs(array of object),
+  // ARGS: ctx, status(numeric), payload(object/array), msgs(array of object named 'msg'),
   // Example for a msgs -->  [{ msg: 'error_code_name', }]
   // USAGE:
-  // ex: ctx.body = global.responseEnvelope(200, null, {x: 200, y: 34})
-  // ex: ctx.body = global.responseEnvelope(400, errors, null)
+  // ex: ctx.body = global.responseEnvelope(ctx, 200, null, {x: 200, y: 34})
+  // ex: ctx.body = global.responseEnvelope(ctx, 400, errors, null)
   function responseEnvelope(ctx, status, payload, msgs) {
     let m = msgs.length > 0 ? msgs : [];
     let p = typeof payload === 'object' ? payload : {};
     let proto = {
-      meta: {status: status, msgs: m },
-      payload: p
+      meta: {status: status, msgs: m }, payload: p
     };
     // Set the status
     ctx.status = status;

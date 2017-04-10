@@ -62,11 +62,13 @@ let UserRoutines = {
     let userFromDB = await UserRoutines.getByEmail(email, {
       dataSets: userSets.authentification
     });
+    console.log(userFromDB);
     if (userFromDB) {
       userFromDB = userFromDB.toJSON();
       if (UserRoutines.validatePassword(userFromDB.password.toString(), password)) {
         return userFromDB;
       }
+      return false;
     }
     return false;
   },

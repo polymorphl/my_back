@@ -86,8 +86,8 @@ let ctrl = {
   /*
   ** Login
   */
-  signin: async function(username, password){
-    let userIsLogged = await User.c.login(username, password);
+  signin: async function(email, password){
+    let userIsLogged = await User.c.login(email, password);
     if(!userIsLogged){
       return { error: true, data: { msg: "auth.errors.login.0"}};
     } else {

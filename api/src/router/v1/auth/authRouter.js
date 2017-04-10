@@ -55,6 +55,7 @@ router.post('/', async(ctx) => {
   ctx.response.set('authorization', `JWT ${tkn}`);
   // delete password from response
   delete auth.data.password;
+  logger.info('Login done for %s', auth.data.email);
   // send
   ctx.body = ctx.responseEnvelope(ctx, 200, auth.data, []);
 });
@@ -76,19 +77,20 @@ router.post('/register', async(ctx, next) => {
 
 //a loading user will try to auth with cookie on this route..
 router.get('/pingAuth', async(ctx) => {
-  if(ctx.state.user){
-    let user = await User.c.getById(ctx.state.user.id, {
-      include: [{
-        association: User.settings, as: 'settings'
-      },{
-        association: User.devices
-      }],
-    });
-    logger.info('USER FOUND => %s(%)', ctx.state.user.account, ctx.state.user.id);
-    ctx.body = ctx.responseEnvelope(ctx, 200, user.toJSON(), []);
-  } else {
-    ctx.body = ctx.responseEnvelope(ctx, 200, null, [{ msg: 'auth.errors.login.2' }]);
-  }
+  ctx.body = ctx.responseEnvelope(ctx, 200, {}, []);
+  // if(ctx.state.user){
+  //   let user = await User.c.getById(ctx.state.user.id, {
+  //     include: [{
+  //       association: User.settings, as: 'settings'
+  //     },{
+  //       association: User.devices
+  //     }],
+  //   });
+  //   logger.info('USER FOUND => %s(%)', ctx.state.user.account, ctx.state.user.id);
+  //   ctx.body = ctx.responseEnvelope(ctx, 200, user.toJSON(), []);
+  // } else {
+  //   ctx.body = ctx.responseEnvelope(ctx, 200, null, [{ msg: 'auth.errors.login.2' }]);
+  // }
 });
 
 /*

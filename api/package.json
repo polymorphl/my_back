@@ -9,8 +9,8 @@
     "my__gen-ssl": "./scripts/generate_certs.sh",
     "postinstall": "npm run my__gen-ssl"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "polymorphl",
+  "license": "",
   "dependencies": {
     "cookie": "^0.3.1",
     "crypto": "0.0.3",
@@ -27,7 +27,6 @@
     "koa-send": "^3.3.0",
     "koa-unless": "^1.0.7",
     "locale": "^0.1.0",
-    "mjml": "^3.3.0",
     "mysql": "^2.13.0",
     "node-gcm": "^0.14.4",
     "nodemailer": "^0.7.1",
@@ -35,7 +34,11 @@
     "pug": "^2.0.0-beta11",
     "sequelize": "^3.30.4",
     "socket.io": "^1.7.3",
+    "socket.io-redis": "^2.0.1",
     "sticky-listen": "^3.3.0",
     "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "mjml": "^3.3.0"
   }
 }

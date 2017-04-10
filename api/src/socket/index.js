@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const cookie = require('cookie');
 const sticky = require('sticky-listen');
+const redis = require('socket.io-redis');
 
 const Chat = require('./endpoints/chat').Chat;
 const Rooms = require('./endpoints/room').Rooms;
@@ -17,7 +18,7 @@ let socketApp = (server)=> {
   try {
     io = require('socket.io')(server);
     if( io != null ) {
-      logger.info( "Socket server ready!" );
+      logger.info( "Socket server ready on port %s", process.env.APP_PORT);
     } else {
       throw new Error( "Returned null after attaching to koa server." );
     }
@@ -29,10 +30,19 @@ let socketApp = (server)=> {
     sticky.listen(server);
   }
 
+   //define redis adapter for multiple instances communication
+  let adapter = redis({host: process.env.REDIS_ADDR});
+
+  io.adapter(adapter);
+
   io.on('connection', (socket) => {
+
+    let options;
+    
     var auth_timeout = setTimeout(function(){
       socket.disconnect('unauthorized');
     }, C.SOCKET_TIMEOUT);
+
     socket.on('authenticate', (data)=>{
       clearTimeout(auth_timeout);
       // error handler
@@ -93,14 +103,14 @@ let defineConnectedEndpoints = (socket) => {
 };
 
 function UnauthorizedError (code, error) {
-  new Error.call(this, error.message);
-  this.message = error.message;
-  this.inner = error;
-  this.data = {
-    message: this.message,
-    code: code,
-    type: "UnauthorizedError"
-  };
+   Error.call(this, error.message);
+    this.message = error.message;
+    this.inner = error;
+    this.data = {
+      message: this.message,
+      code: code,
+      type: "UnauthorizedError"
+    };
 }
 
 UnauthorizedError.prototype = Object.create(Error.prototype);
