@@ -1,4 +1,4 @@
-const forceUpdate = require('../update');
+const forceUpdate = require('../update').forceUpdate;
 
 let events = (socket)=>{
   socket.on('room:join', (tags)=>{

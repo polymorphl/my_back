@@ -1,8 +1,6 @@
 const room = require('./rooms/user');
 
-const updateResources = room.updateResources;
 const updateGeneralData = room.updateGeneralData;
-const updateExperience = room.updateExperience;
 const FAST_UPDATE = 500;
 const REGULAR_UPDATE = 1000;
 const SLOW_UPDATE = 3000;
@@ -18,16 +16,6 @@ let serverRooms = {
     tickrate: REGULAR_UPDATE,
     timer: 0,
     fn: updateGeneralData
-  },
-  resources: {
-    tickrate: REGULAR_UPDATE,
-    timer: 0,
-    fn: updateResources
-  },
-  experience: {
-    tickrate: SLOW_UPDATE,
-    timer: 0,
-    fn: updateExperience
   }
 };
 

@@ -3,6 +3,7 @@ const UserSettings = require('./web/UserSettings').UserSettings;
 const PushModule = require('./web/push/index');
 
 /* Define all relations */
+User.settings = User.hasOne(UserSettings, { as: 'settings', foreignKey: 'user_id'});
 // Notifications
 //PushActive.web_devices = PushActive.hasMany(PushWeb, { as: 'web_devices', foreignKey: 'configuration_id'});
 //PushActive.mobile_devices = PushActive.hasMany(PushMobile, { as: 'mobile_devices', foreignKey: 'configuration_id'});

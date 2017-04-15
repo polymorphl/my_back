@@ -62,15 +62,15 @@ let UserRoutines = {
     let userFromDB = await UserRoutines.getByEmail(email, {
       dataSets: userSets.authentification
     });
-    console.log(userFromDB);
-    if (userFromDB) {
+    if (userFromDB != null) {
       userFromDB = userFromDB.toJSON();
       if (UserRoutines.validatePassword(userFromDB.password.toString(), password)) {
         return userFromDB;
       }
       return false;
+    } else {
+      return false;
     }
-    return false;
   },
   createUser: async function(email, password, firstname, lastname){
     return UserModel.create({

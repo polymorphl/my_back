@@ -33,10 +33,20 @@ router.post('/', async(ctx) => {
     ctx.body = ctx.responseEnvelope(ctx, 400, {}, []);
   }
   let auth = await ctrl.signin(ctx.request.body.email, ctx.request.body.password);
+  console.log('auth', auth);
   if(auth.error){
     ctx.body = ctx.responseEnvelope(ctx, 401, {}, [auth.data]);
+  } else {
+    let tokenData = { user: auth.data };
+    let tkn = jwt.sign(tokenData, cert);
+    // Set Authorization header
+    ctx.response.set('authorization', `JWT ${tkn}`);
+    // delete password from response
+    delete auth.data.password;
+    logger.info('Login done for %s', auth.data.email);
+    // send
+    ctx.body = ctx.responseEnvelope(ctx, 200, auth.data, []);
   }
-  let tokenData = { user: auth.data };
   // TODO: reimplement cookie for web connection
   // let cookieOpt = {
   //   path: '/',
@@ -49,15 +59,6 @@ router.post('/', async(ctx) => {
   //   cookieOpt.secure = false;
   // }
   // ctx.cookies.set('tkn', jwt.sign(tokenData, cert), cookieOpt);
-
-  let tkn = jwt.sign(tokenData, cert);
-  // Set Authorization header
-  ctx.response.set('authorization', `JWT ${tkn}`);
-  // delete password from response
-  delete auth.data.password;
-  logger.info('Login done for %s', auth.data.email);
-  // send
-  ctx.body = ctx.responseEnvelope(ctx, 200, auth.data, []);
 });
 
 /*
